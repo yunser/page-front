@@ -1,0 +1,27 @@
+.ui-wrap {
+
+}
+.layout-header {
+    position: relative;
+    background-color: #0e9aef;
+    height: 64px;
+}
+.layout-body {
+
+}
+.layout-footer {
+
+}
+
+.layout-header .title {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 64px;
+}
+.layout-header .back {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    color: #fff;
+}
