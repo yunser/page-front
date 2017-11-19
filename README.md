@@ -1,8 +1,20 @@
 # page-front
 
+## 项目介绍
+
 > A HTML5 page generator.
 
-一个纯前端的 H5 生成网站示例。可用来制作 H5 页面或者在线演示文档PPT。该项目使用的框架有 jQuery、Bootstrap 等，将逐渐重构成 Vue 框架。
+一个纯前端的 H5 页面在线制作工具。可用来制作 H5 页面或者在线演示文档PPT。该项目使用的框架有 jQuery、Bootstrap 等，将逐渐重构成 Vue 框架。
+
+软件截图：[查看截图](screenshot.md)
+
+已实现的功能：
+
+* H5编辑器的基本功能。
+
+近期内打算实现的功能：
+
+* 本地保存。
 
 ## Build Setup
 

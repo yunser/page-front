@@ -9,3 +9,107 @@
     src:url('/static/css/MyriadSetPro-Ultralight.ttf');
     font-weight: 200;
 }
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #ddd;
+}
+::-webkit-scrollbar-thumb {
+    background: #bbb;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #eee;
+}
+
+/* reset */
+.dropdown-menu>.disabled>a,
+.dropdown-menu>.disabled>a:hover,
+.dropdown-menu>.disabled>a:focus {
+    color: #ccc;
+}
+.ui-rotate-handle {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    margin-top: -20px;
+    background-color: #fff;
+    border: 1px solid #08a1ef;
+    cursor: e-resize;
+}
+.color-dialog {
+    display: none;
+    width: 600px;
+    .ui-color {
+        display: none;
+    }
+    .dropdown-menu {
+        box-shadow: none;
+    }
+    .colorpicker-saturation {
+        width: 200px;
+        height: 200px;
+    }
+    colorpicker-hue {
+        height: 200px;
+    }
+    .left {
+        float: left;
+    }
+    .settings {
+        float: left;
+        margin-left: 16px;
+    }
+    .setting {
+        margin-bottom: 24px;
+        overflow: hidden;
+    }
+    .rgbs {
+        overflow: hidden;
+    }
+    .hex {
+        .form-control {
+            float: left;
+            width: 80px;
+        }
+    }
+    .color-preview {
+        width: 20px;
+        height: 20px;
+        background-color: #f00;
+    }
+    .rgb {
+        float: left;
+        width: 80px;
+        margin-right: 16px;
+    }
+    .title {
+        float: left;
+        width: 50px;
+        margin-top: 4px;
+        margin-right: 8px;
+    }
+    .text {
+        color: #999;
+        text-align: center;
+    }
+}
+.dropdown-menu-tip {
+    float: right;
+    color: #ccc;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0px;
+}
+.btn-default:active,
+.btn-default.active {
+    color: #333;
+    background-color: #f1f1f1;
+    border-color: #ccc;
+}

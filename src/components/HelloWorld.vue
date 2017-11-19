@@ -136,12 +136,12 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <!--<li><a href="help.html">帮助页面</a></li>-->
-                                <li><a id="key" href="#">快捷键</a></li>
-                                <li><a id="about" href="#">关于</a></li>
+                                <li><a href="#" @click="showKey">快捷键</a></li>
+                                <li><a href="#" @click="about">关于</a></li>
                             </ul>
                         </li>
                         <li class="nav-item navbar-form">
-                            <button id="help" class="btn btn-info" href="#">快速导航</button>
+                            <button class="btn btn-info" @click="quickNav">快速导航</button>
                         </li>
                         <li class="nav-item navbar-form">
                             <button class="btn btn-info" @click="test">测试一下</button>
@@ -1390,47 +1390,32 @@
             this.init()
         },
         methods: {
+            about() {
+                ui.alert('Slides v17.4.0')
+            },
             test() {
                 this.$router.push('/about')
             },
+            showKey() {
+                ui.frame('help.html', {
+                    title: '快捷键',
+                    size: '300px'
+                })
+            },
+            quickNav() {
+                bootstro.start('.bootstro', {
+                    nextButtonText: '继续 >>',
+                    prevButtonText: '<< 返回',
+                    finishButtonText: '关闭'
+                })
+            },
             init() {
                 var editor = new SliderEditor('#demo', {
-
-                });
-
-
-
-
-
-
-
-                function help() {
-                    ui.frame('help.html', {
-                        title: '快捷键',
-                        size: '300px'
-                    });
-                }
-                $('#key').on('click', function (e) {
-                    e.preventDefault();
-                    help();
-                });
-                $('#about').on('click', function (e) {
-                    e.preventDefault();
-                    ui.alert('Slides v17.4.0');
-                });
+                })
 
                 // 预览菜单
                 $('#display').contextmenu({
                     content: '#display-menu'
-                });
-
-                $('#help').on('click', function (e) {
-                    e.preventDefault();
-                    bootstro.start('.bootstro', {
-                        nextButtonText: '继续 >>',
-                        prevButtonText: '<< 返回',
-                        finishButtonText: '关闭'
-                    });
                 });
 
                 // 全屏
