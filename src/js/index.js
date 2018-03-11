@@ -411,7 +411,6 @@ fn.initEditArea = function () {
         // 旋转角度
         var deg = ui.Rotateable.getDeg(that.$curElem);
         $('#editor-rotate').val(deg);
-
         // 边框样式
         var borderStyle = $content.css('border-style');
         $('#editor-border-style').val(borderStyle);
@@ -419,7 +418,6 @@ fn.initEditArea = function () {
             $('#border-width-and-color').hide();
         } else {
             $('#border-width-and-color').show();
-
             // 边框大小
             var borderWidth = $content.css('border-width').replace('px', '');
             $('#editor-border-width').val(borderWidth);

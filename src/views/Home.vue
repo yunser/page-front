@@ -42,6 +42,7 @@
                                 版式 <i class="caret"></i>
                             </a>
                             <ul class="dropdown-box dropdown-box-right design-box">
+                                <!-- <my-template :select="selectTemplate" @select="selectTemplate" /> -->
                                 <ul id="design-list" class="design-list">
                                     <li class="design-item">
                                         <div class="viewport-box">
@@ -135,16 +136,10 @@
                                 帮助 <i class="caret"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <!--<li><a href="help.html">帮助页面</a></li>-->
-                                <li><a href="#" @click="showKey">快捷键</a></li>
+                                <li><router-link to="/help" target="_blank">帮助页面</router-link></li>
                                 <li><a href="#" @click="about">关于</a></li>
+                                <li><a href="#" @click.prevent="quickNav">快速导航</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item navbar-form">
-                            <button class="btn btn-info" @click="quickNav">快速导航</button>
-                        </li>
-                        <li class="nav-item navbar-form">
-                            <button class="btn btn-info" @click="test">测试一下</button>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
@@ -1390,17 +1385,11 @@
             this.init()
         },
         methods: {
+            selectTemplate(asd) {
+                alert(asd)
+            },
             about() {
                 ui.alert('Slides v17.4.0')
-            },
-            test() {
-                this.$router.push('/about')
-            },
-            showKey() {
-                ui.frame('help.html', {
-                    title: '快捷键',
-                    size: '300px'
-                })
             },
             quickNav() {
                 bootstro.start('.bootstro', {

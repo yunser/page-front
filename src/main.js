@@ -1,12 +1,14 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './scss/main.scss'
 import './js/common'
 import './js/index'
-
+import YunserUI from 'yunser-ui-vue'
+import 'yunser-ui-vue/dist/yunser-ui.css'
+import './scss/main.scss'
+import ui from './components/index'
+Vue.use(YunserUI)
+Vue.use(ui)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
