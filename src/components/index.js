@@ -1,9 +1,9 @@
 import page from './page'
-import template from './template'
+// import template from './template'
 
 export default {
     install: function (Vue) {
         Vue.component('my-page', page)
-        Vue.component('my-template', template)
+        // Vue.component('my-template', template)
     }
 }
