@@ -31,6 +31,7 @@
                             <ul class="dropdown-box dropdown-box-right insert-box">
                                 <button id="insert-text" class="btn btn-info" href="#undo">文字</button>
                                 <button id="insert-img" class="btn btn-info" href="#undo"><i class="icon icon-photo"></i> 图片</button>
+                                <button class="btn btn-info" href="#undo" @click.prevent="selectImage">从其他应用选择图片</button>
                                 <button id="insert-shape" class="btn btn-info" href="#undo">形状</button>
                                 <button id="insert-table" class="btn btn-info" href="#undo">表格</button>
                                 <button id="insert-video" class="btn btn-info" href="#redo"><i class="glyphicon glyphicon-arrow-right"></i> 视频</button>
@@ -138,7 +139,6 @@
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li><router-link to="/help" target="_blank">帮助页面</router-link></li>
                                 <li><a href="#" @click="about">关于</a></li>
-                                <li><a href="#" @click.prevent="quickNav">快速导航</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -156,7 +156,7 @@
         <!-- /头部 -->
         <div class="layout-body">
             <div class="layout-side">
-                <ul id="preview-list" class="preview-list bootstro" data-bootstro-step='0' data-bootstro-width="200px" data-bootstro-title="预览区" data-bootstro-content="这是是预览区" data-bootstro-placement="right">
+                <ul id="preview-list" class="preview-list">
                     <li class="preview-item  active">
                         <span class="page">1</span>
                         <div class="viewport-box">
@@ -358,7 +358,7 @@
             <div class="layout-content">
                 <div id="device" class="device">
                     <div id="template" class="template"></div>
-                    <div class="demo bootstro" data-bootstro-step='1' data-bootstro-width="200px" data-bootstro-title="编辑区" data-bootstro-content="可以在这里编辑您的演示文档" data-bootstro-placement="right">
+                    <div class="demo">
                         <div id="editor" class="demo2" style="width: 100%; height: 100%; background-size: 100% 100%;">
                         </div>
                     </div>
@@ -426,6 +426,7 @@
                                     <h4 class="title">图片编辑</h4>
                                     <div class="form-group">
                                         <button id="editor-relace-img" class="btn btn-primary">替换图片</button>
+                                        <button class="btn btn-primary" @click="replaceImage">从其他应用选择图片并替换</button>
                                     </div>
                                 </div>
 
@@ -1376,6 +1377,8 @@
 </template>
 
 <script>
+    const Intent = window.Intent
+
     export default {
         data () {
             return {
@@ -1391,16 +1394,10 @@
             about() {
                 ui.alert('Slides v17.4.0')
             },
-            quickNav() {
-                bootstro.start('.bootstro', {
-                    nextButtonText: '继续 >>',
-                    prevButtonText: '<< 返回',
-                    finishButtonText: '关闭'
-                })
-            },
             init() {
-                var editor = new SliderEditor('#demo', {
+                let editor = new SliderEditor('#demo', {
                 })
+                this.editor = editor
 
                 // 预览菜单
                 $('#display').contextmenu({
@@ -1469,6 +1466,32 @@
 
                 //ui.color();
                 $("[data-toggle='tooltip']").tooltip(); // TODO
+            },
+            selectImage() {
+                let intent = new Intent({
+                    action: 'http://webintent.yunser.com/pick',
+                    type: 'image/*'
+                })
+                navigator.startActivity(intent, data => {
+                    console.log('成功了')
+                    this.editor.insertImage(data)
+                }, data => {
+                    console.log('失败')
+                })
+            },
+            replaceImage() {
+                let dataUrl = this.editor.$curElem.find('.elem-content').attr('src')
+                let intent = new Intent({
+                    action: 'http://webintent.yunser.com/pick',
+                    type: 'image/*',
+                    data: dataUrl
+                })
+                navigator.startActivity(intent, data => {
+                    console.log('成功了')
+                    this.editor.$curElem.find('.elem-content').attr('src', data)
+                }, data => {
+                    console.log('失败')
+                })
             }
         }
     }
